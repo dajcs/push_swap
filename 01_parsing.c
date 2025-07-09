@@ -6,25 +6,25 @@
 /*   By: anemet <anemet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 13:48:22 by anemet            #+#    #+#             */
-/*   Updated: 2025/07/09 14:27:32 by anemet           ###   ########.fr       */
+/*   Updated: 2025/07/09 14:30:25 by anemet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 // helper to check for non-numeric characters and duplicates
-void check_duplicates(t_stack *a)
+void	check_duplicates(t_stack *a)
 {
-	t_stack *current;
-	t_stack *runner;
+	t_stack	*current;
+	t_stack	*runner;
 
 	current = a;
-	while(current)
+	while (current)
 	{
 		runner = current->next;
-		while(runner);
+		while (runner)
 		{
-			if(current-> value == runner->value)
+			if (current->value == runner->value)
 				error_exit(&a, NULL);
 			runner = runner->next;
 		}
@@ -32,11 +32,12 @@ void check_duplicates(t_stack *a)
 }
 
 // long int version of ft_atoi, helps to check for INT overflow
-static long ft_atol(const char *str)
+static long	ft_atol(const char *str)
 {
-	long res;
-	int sign;
-	int i;
+	long	res;
+	int		sign;
+	int		i;
+
 	while (str[i] == ' ' || (str[i] >= '\t' && str[i] <= '\r'))
 		i++;
 	if (str[i] == '-' || str[i] == '+')
@@ -45,7 +46,7 @@ static long ft_atol(const char *str)
 			sign = -1;
 		i++;
 	}
-	while(ft_isdigit(str[i]))
+	while (ft_isdigit(str[i]))
 	{
 		res = res * 10 + (str[i] - '0');
 		i++;
@@ -54,10 +55,10 @@ static long ft_atol(const char *str)
 }
 
 // helper to add a new node to the back of the stack
-void add_node_back(t_stack **stack, int n)
+void	add_node_back(t_stack **stack, int n)
 {
-	t_stack *node;
-	t_stack *last;
+	t_stack	*node;
+	t_stack	*last;
 
 	node = malloc(sizeof(t_stack));
 	if (!node)
@@ -67,17 +68,17 @@ void add_node_back(t_stack **stack, int n)
 	if (!*stack)
 	{
 		*stack = node;
-		return;
+		return ;
 	}
 	last = get_stack_bottom(*stack);
 	last->next = node;
 }
 
 // fills stack `a` from command line arguments
-void fill_stack_from_args(int argc, char **argv, t_stack **a)
+void	fill_stack_from_args(int argc, char **argv, t_stack **a)
 {
-	int i;
-	long num;
+	int		i;
+	long	num;
 
 	i = 1;
 	while (i < argc)
@@ -93,10 +94,10 @@ void fill_stack_from_args(int argc, char **argv, t_stack **a)
 
 // top-level function to validate all inputs and initialize stack `a`
 // handles both "1 2 3" and 1 2 3 argument styles
-void validate_and_parse_args(int argc, char **argv, t_stack **a)
+void	validate_and_parse_args(int argc, char **argv, t_stack **a)
 {
-	char **split_args;
-	int i;
+	char	**split_args;
+	int		i;
 
 	if (argc == 2)
 	{
@@ -113,4 +114,3 @@ void validate_and_parse_args(int argc, char **argv, t_stack **a)
 	}
 	check_duplicates(*a);
 }
-

@@ -6,7 +6,7 @@
 /*   By: anemet <anemet@student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:57:49 by anemet            #+#    #+#             */
-/*   Updated: 2025/07/10 14:25:59 by anemet           ###   ########.fr       */
+/*   Updated: 2025/07/10 16:41:31 by anemet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ void	push_swap_turk(t_stack **a, t_stack **b)
 	int	stack_a_size;
 	int	target_pos;
 
-	stack_a_size - get_stack_size(*a);
+	stack_a_size = get_stack_size(*a);
 	if (stack_a_size-- > 3 && !is_sorted(*a))
 		pb(a, b);
 	if (stack_a_size-- > 3 && !is_sorted(*a))

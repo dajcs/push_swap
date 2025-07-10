@@ -6,7 +6,7 @@
 /*   By: anemet <anemet@student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 13:48:22 by anemet            #+#    #+#             */
-/*   Updated: 2025/07/10 14:25:59 by anemet           ###   ########.fr       */
+/*   Updated: 2025/07/10 16:39:46 by anemet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ static long	ft_atol(const char *str)
 	int		sign;
 	int		i;
 
+	i = 0;
+	res = 0;
+	sign = 1;
 	while (str[i] == ' ' || (str[i] >= '\t' && str[i] <= '\r'))
 		i++;
 	if (str[i] == '-' || str[i] == '+')
@@ -53,26 +56,6 @@ static long	ft_atol(const char *str)
 	}
 	return (res * sign);
 }
-
-// helper to add a new node to the back of the stack
-// void	add_node_back(t_stack **stack, int n)
-// {
-// 	t_stack	*node;
-// 	t_stack	*last;
-
-// 	node = malloc(sizeof(t_stack));
-// 	if (!node)
-// 		error_exit(stack, NULL);
-// 	node->value = n;
-// 	node->next = NULL;
-// 	if (!*stack)
-// 	{
-// 		*stack = node;
-// 		return ;
-// 	}
-// 	last = get_stack_bottom(*stack);
-// 	last->next = node;
-// }
 
 // fills stack `a` from command line arguments
 void	fill_stack_from_args(int argc, char **argv, t_stack **a)

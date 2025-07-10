@@ -6,7 +6,7 @@
 /*   By: anemet <anemet@student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 14:23:30 by anemet            #+#    #+#             */
-/*   Updated: 2025/07/10 14:38:06 by anemet           ###   ########.fr       */
+/*   Updated: 2025/07/10 14:56:24 by anemet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 // swaps the first two elements of a stack
 // does nothing if the stack has 0 or 1 elements
+// first_node & second_node: temp pointers to former 1st and 2nd nodes
+// first_node->next = ... // re-wiring to 3rd element
+// second_node->next = ... // re-wiring to 2nd element (old first_node)
+// *stack = second_node    // the head of stack (*stack) point to old 2nd node
 void	swap(t_stack **stack)
 {
 	t_stack	*first_node;

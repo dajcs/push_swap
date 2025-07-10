@@ -6,7 +6,7 @@
 /*   By: anemet <anemet@student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 14:01:42 by anemet            #+#    #+#             */
-/*   Updated: 2025/07/10 14:25:59 by anemet           ###   ########.fr       */
+/*   Updated: 2025/07/10 14:45:33 by anemet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 // pushes the top element from one stack to another
 // does nothing if the source stack is empty
+// node_to_push = ...       // saves a pointer to the top node
+// *stack_from = ...        // updates the source stack head
+// node_to_push->next = ... // the moved node set to point to the dest top node
+// *stack_to = ...          // updates the dest stack's head to the pushed node
 void	push(t_stack **stack_from, t_stack **stack_to)
 {
 	t_stack	*node_to_push;

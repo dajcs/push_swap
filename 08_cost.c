@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   08_cost.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anemet <anemet@student.42luxembourg.lu>    +#+  +:+       +#+        */
+/*   By: anemet <anemet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 19:40:20 by anemet            #+#    #+#             */
-/*   Updated: 2025/07/09 20:51:08 by anemet           ###   ########.fr       */
+/*   Updated: 2025/07/10 09:27:40 by anemet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// the last few lines from the function `do_rotate(a, b, cheapest)`
 void	do_similar_loops_for_b(t_stack **a, t_stack **b, t_stack *cheapest)
 {
 	while (cheapest->cost_b < 0)
@@ -59,11 +60,11 @@ void	do_cheapsest_move(t_stack **a, t_stack **b)
 {
 	t_stack	*current;
 	t_stack	*cheapest_node;
-	long	cheapest_cost;
-	long	cost;
+	int		cheapest_cost;
+	int		cost;
 
 	current = *a;
-	cheapest_cost = LONG_MAX;
+	cheapest_cost = INT_MAX;
 	while (current)
 	{
 		cost = abs(current->cost_a) + abs(current->cost_b);

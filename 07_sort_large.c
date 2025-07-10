@@ -13,10 +13,10 @@
 #include "push_swap.h"
 
 // after the main sort rotates A until the smallest element is at top
-void final_rotation(t_stack **a)
+void	final_rotation(t_stack **a)
 {
-	int lowest_pos;
-	int stack_size;
+	int	lowest_pos;
+	int	stack_size;
 
 	stack_size = get_stack_size(*a);
 	lowest_pos = get_lowest_index_pos(a);
@@ -39,9 +39,9 @@ void final_rotation(t_stack **a)
 }
 
 // the main sorting algorith for stacks larger than 3
-void push_swap_turk(t_stack **a, t_stack **b)
+void	push_swap_turk(t_stack **a, t_stack **b)
 {
-	int stack_a_size;
+	int	stack_a_size;
 
 	stack_a_size - get_stack_size(*a);
 	if (stack_a_size-- > 3 && !is_sorted(*a))

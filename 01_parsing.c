@@ -6,7 +6,7 @@
 /*   By: anemet <anemet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 13:48:22 by anemet            #+#    #+#             */
-/*   Updated: 2025/07/09 14:30:25 by anemet           ###   ########.fr       */
+/*   Updated: 2025/07/10 10:56:15 by anemet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,24 +55,24 @@ static long	ft_atol(const char *str)
 }
 
 // helper to add a new node to the back of the stack
-void	add_node_back(t_stack **stack, int n)
-{
-	t_stack	*node;
-	t_stack	*last;
+// void	add_node_back(t_stack **stack, int n)
+// {
+// 	t_stack	*node;
+// 	t_stack	*last;
 
-	node = malloc(sizeof(t_stack));
-	if (!node)
-		error_exit(stack, NULL);
-	node->value = n;
-	node->next = NULL;
-	if (!*stack)
-	{
-		*stack = node;
-		return ;
-	}
-	last = get_stack_bottom(*stack);
-	last->next = node;
-}
+// 	node = malloc(sizeof(t_stack));
+// 	if (!node)
+// 		error_exit(stack, NULL);
+// 	node->value = n;
+// 	node->next = NULL;
+// 	if (!*stack)
+// 	{
+// 		*stack = node;
+// 		return ;
+// 	}
+// 	last = get_stack_bottom(*stack);
+// 	last->next = node;
+// }
 
 // fills stack `a` from command line arguments
 void	fill_stack_from_args(int argc, char **argv, t_stack **a)
@@ -88,6 +88,7 @@ void	fill_stack_from_args(int argc, char **argv, t_stack **a)
 		num = ft_atol(argv[i]);
 		if (num > INT_MAX || num < INT_MIN)
 			error_exit(a, NULL);
+		add_node(a, (int)num);
 		i++;
 	}
 }
@@ -96,17 +97,17 @@ void	fill_stack_from_args(int argc, char **argv, t_stack **a)
 // handles both "1 2 3" and 1 2 3 argument styles
 void	validate_and_parse_args(int argc, char **argv, t_stack **a)
 {
-	char	**split_args;
+	char	**split_arg1;
 	int		i;
 
 	if (argc == 2)
 	{
 		i = 0;
-		split_args = ft_split(argv[1], ' ');
-		while (split_args[i])
+		split_arg1 = ft_split(argv[1], ' ');
+		while (split_arg1[i])
 			i++;
-		fill_stack_from_args(i + 1, split_args - 1, a);
-		free_split(split_args);
+		fill_stack_from_args(i + 1, split_arg1 - 1, a);
+		free_split(split_arg1);
 	}
 	else
 	{

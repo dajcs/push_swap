@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   09_utils_positions.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anemet <anemet@student.42luxembourg.lu>    +#+  +:+       +#+        */
+/*   By: anemet <anemet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 23:39:54 by anemet            #+#    #+#             */
-/*   Updated: 2025/07/10 00:04:50 by anemet           ###   ########.fr       */
+/*   Updated: 2025/07/10 10:22:58 by anemet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,14 @@ int	get_lowest_index_pos(t_stack **stack)
 // target position in B: the node on top of which we're pushing the node from A
 // this is the largest element in B that is smaller than the node in A
 // if all nodes in B are bigger than node in A, target will be the largest in B
+/* example:
+               3 ---         >
+                                21 ---------------------
+               9 ---------   > 
+                                 8 --------
+                                 6 ------
+                    A                B
+*/
 void	get_target_pos(t_stack **a, t_stack **b)
 {
 	t_stack	*tmp_a;

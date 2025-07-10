@@ -6,7 +6,7 @@
 /*   By: anemet <anemet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 11:44:45 by anemet            #+#    #+#             */
-/*   Updated: 2025/07/09 13:34:20 by anemet           ###   ########.fr       */
+/*   Updated: 2025/07/10 11:02:51 by anemet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct s_stack
 void				validate_and_parse_args(int argc, char **argv, t_stack **a);
 
 /* 02_stack_init.c */
-t_stack				*fill_stack_values(int argc, char **argv);
+void				add_node(t_stack **stack, int n);
 void				assign_index(t_stack *stack_a, int stack_size);
 
 /* 03_operations_push_swap.c */

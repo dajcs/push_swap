@@ -3,10 +3,10 @@
 Generate N distinct random integers within a user-supplied range.
 
 Usage:
-    python push_rnd.py <low> <high> <count>
+    python push_test.py <low> <high> <count>
 
 Example:
-    python push_rnd.py -1000 1000 50
+    python push_test.py -1000 1000 50
 """
 import argparse
 import random
@@ -38,8 +38,13 @@ def main() -> None:
 
     # One per line; pipe/redirect as desired
     vals = ' '.join(map(str, nums))
-    print(f'ARG="{vals}"; ./push_swap $ARG | wc -l');
-    print(f'ARG="{vals}"; ./push_swap $ARG | ./checker_linux $ARG');
+    print()
+    print(f'ARG="{vals}";')
+    print("export ARG")
+    print()
+    print("../push_swap $ARG | wc -l")
+    print("../push_swap $ARG | ./checker_linux $ARG")
+    print()
 
 
 if __name__ == "__main__":

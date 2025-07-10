@@ -6,7 +6,7 @@
 /*   By: anemet <anemet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 11:44:45 by anemet            #+#    #+#             */
-/*   Updated: 2025/07/10 11:26:54 by anemet           ###   ########.fr       */
+/*   Updated: 2025/07/10 13:58:45 by anemet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,19 @@ typedef struct s_stack
 	struct s_stack	*next;
 }					t_stack;
 
-/* 01_parsing.c */
+/* 00_parsing.c */
 void				validate_and_parse_args(int argc, char **argv, t_stack **a);
 
-/* 02_stack_init.c */
+/* 01_stack_init.c */
 void				update_positions(t_stack *a, t_stack *b);
 void				add_node(t_stack **stack, int n);
 void				assign_index(t_stack *stack_a, int stack_size);
 
-/* 03_operations_push_swap.c */
+/* 02_operations_push.c */
 void				pa(t_stack **a, t_stack **b);
 void				pb(t_stack **a, t_stack **b);
+
+/* 03_operations_swap.c */
 void				sa(t_stack **a);
 void				sb(t_stack **b);
 void				ss(t_stack **a, t_stack **b);

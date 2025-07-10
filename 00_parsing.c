@@ -6,7 +6,7 @@
 /*   By: anemet <anemet@student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 13:48:22 by anemet            #+#    #+#             */
-/*   Updated: 2025/07/10 16:39:46 by anemet           ###   ########.fr       */
+/*   Updated: 2025/07/10 19:58:52 by anemet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	check_duplicates(t_stack *a)
 				error_exit(&a, NULL);
 			runner = runner->next;
 		}
+		current = current->next;
 	}
 }
 

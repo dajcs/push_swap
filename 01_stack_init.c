@@ -6,7 +6,7 @@
 /*   By: anemet <anemet@student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 09:54:58 by anemet            #+#    #+#             */
-/*   Updated: 2025/07/10 14:25:59 by anemet           ###   ########.fr       */
+/*   Updated: 2025/07/10 20:16:09 by anemet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,10 @@ void	assign_index(t_stack *stack_a, int stack_size)
 				highest_node = current;
 			}
 			current = current->next;
-			if (highest_node != NULL)
-				highest_node->index = i;
 		}
+		if (highest_node != NULL)
+			highest_node->index = i;
+		i--;
 	}
 }
 

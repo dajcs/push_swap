@@ -6,23 +6,23 @@
 /*   By: anemet <anemet@student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 19:40:20 by anemet            #+#    #+#             */
-/*   Updated: 2025/07/10 14:25:59 by anemet           ###   ########.fr       */
+/*   Updated: 2025/07/10 22:08:46 by anemet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 // the last few lines from the function `do_rotate(a, b, cheapest)`
-void	do_similar_loops_for_b(t_stack **a, t_stack **b, t_stack *cheapest)
+void	do_similar_loops_for_b(t_stack **b, t_stack *cheapest)
 {
 	while (cheapest->cost_b < 0)
 	{
-		rra(b);
+		rrb(b);
 		cheapest->cost_b++;
 	}
 	while (cheapest->cost_b > 0)
 	{
-		ra(a);
+		rb(b);
 		cheapest->cost_b--;
 	}
 }
@@ -52,7 +52,7 @@ void	do_rotate(t_stack **a, t_stack **b, t_stack *cheapest)
 		ra(a);
 		cheapest->cost_a--;
 	}
-	do_similar_loops_for_b(a, b, cheapest);
+	do_similar_loops_for_b(b, cheapest);
 }
 
 // finds the node in A with the lowest move cost and executes the move

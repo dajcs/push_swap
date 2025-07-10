@@ -6,7 +6,7 @@
 /*   By: anemet <anemet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 19:40:20 by anemet            #+#    #+#             */
-/*   Updated: 2025/07/10 09:27:40 by anemet           ###   ########.fr       */
+/*   Updated: 2025/07/10 11:11:43 by anemet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	do_rotate(t_stack **a, t_stack **b, t_stack *cheapest)
 }
 
 // finds the node in A with the lowest move cost and executes the move
-void	do_cheapsest_move(t_stack **a, t_stack **b)
+void	do_cheapest_move(t_stack **a, t_stack **b)
 {
 	t_stack	*current;
 	t_stack	*cheapest_node;

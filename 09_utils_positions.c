@@ -6,7 +6,7 @@
 /*   By: anemet <anemet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 23:39:54 by anemet            #+#    #+#             */
-/*   Updated: 2025/07/10 10:22:58 by anemet           ###   ########.fr       */
+/*   Updated: 2025/07/10 13:42:47 by anemet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,27 @@ t_stack	*get_stack_bottom(t_stack *stack)
 	return (stack);
 }
 
-// returns the node just before the bottom of the stack
-t_stack	*get_stack_before_bottom(t_stack *stack)
+// finds the position of the node with the largest index
+// used by `get_target_pos` when the target is the largest index in B
+int	get_highest_index_pos(t_stack **stack)
 {
-	if (!stack || !stack->next)
-		return (NULL);
-	while (stack->next->next)
-		stack = stack->next;
-	return (stack);
+	t_stack	*tmp;
+	int		highest_index;
+	int		highest_pos;
+
+	tmp = *stack;
+	highest_index = INT_MIN;
+	highest_pos = -1;
+	while (tmp)
+	{
+		if (tmp->index > highest_index)
+		{
+			highest_index = tmp->index;
+			highest_pos = tmp->pos;
+		}
+		tmp = tmp->next;
+	}
+	return (highest_pos);
 }
 
 // returns the number of nodes in the stack
@@ -48,7 +61,8 @@ int	get_stack_size(t_stack *stack)
 
 // finds the position of the node with the smallest index
 // used at the final rotation to bring the '0' index to the top
-// used by `get_target_pos` when the target is the largest in B
+// used by `find_target_in_a` when Edge case: b_index is larger than
+// all indexes in a => the target will be the lowest index in A
 int	get_lowest_index_pos(t_stack **stack)
 {
 	t_stack	*tmp;
@@ -77,7 +91,7 @@ int	get_lowest_index_pos(t_stack **stack)
 /* example:
                3 ---         >
                                 21 ---------------------
-               9 ---------   > 
+               9 ---------   >
                                  8 --------
                                  6 ------
                     A                B
@@ -103,7 +117,7 @@ void	get_target_pos(t_stack **a, t_stack **b)
 			tmp_b = tmp_b->next;
 		}
 		if (best_match_index == INT_MIN)
-			tmp_a->target_pos = get_lowest_index_pos(b);
+			tmp_a->target_pos = get_highest_index_pos(b);
 		tmp_a = tmp_a->next;
 	}
 }

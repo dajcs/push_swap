@@ -6,7 +6,7 @@
 /*   By: anemet <anemet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 09:54:58 by anemet            #+#    #+#             */
-/*   Updated: 2025/07/10 10:58:30 by anemet           ###   ########.fr       */
+/*   Updated: 2025/07/10 11:26:18 by anemet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,22 @@
 
 // iterates through the stack and updates the `pos` members of each node
 // the top node has pos = 0, the next pos = 1, .... up to N-1
-void	update_positions(t_stack *stack)
+void	update_positions(t_stack *a, t_stack *b)
 {
 	int	i;
 
 	i = 0;
-	if (!stack)
-		return ;
-	while (stack)
+	while (a)
 	{
-		stack->pos = i;
-		stack = stack->next;
+		a->pos = i;
+		a = a->next;
+		i++;
+	}
+	i = 0;
+	while (b)
+	{
+		b->pos = i;
+		b = b->next;
 		i++;
 	}
 }

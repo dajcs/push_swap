@@ -6,7 +6,7 @@
 /*   By: anemet <anemet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 11:44:45 by anemet            #+#    #+#             */
-/*   Updated: 2025/07/10 11:02:51 by anemet           ###   ########.fr       */
+/*   Updated: 2025/07/10 11:26:54 by anemet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_stack
 void				validate_and_parse_args(int argc, char **argv, t_stack **a);
 
 /* 02_stack_init.c */
+void				update_positions(t_stack *a, t_stack *b);
 void				add_node(t_stack **stack, int n);
 void				assign_index(t_stack *stack_a, int stack_size);
 
@@ -77,9 +78,9 @@ void				do_cheapest_move(t_stack **a, t_stack **b);
 /* 09_utils_positions.c */
 int					get_lowest_index_pos(t_stack **stack);
 void				get_target_pos(t_stack **a, t_stack **b);
-int					get_stack_size(t_stack **stack);
+int					get_stack_size(t_stack *stack);
 t_stack				*get_stack_bottom(t_stack *stack);
-t_stack				*get_stack_before_bottom(t_stack *stack);
+// t_stack				*get_stack_before_bottom(t_stack *stack);
 
 /* 10_utils_free.c */
 void				free_stack(t_stack **stack);

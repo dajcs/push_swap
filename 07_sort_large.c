@@ -6,13 +6,13 @@
 /*   By: anemet <anemet@student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:57:49 by anemet            #+#    #+#             */
-/*   Updated: 2025/07/10 16:41:31 by anemet           ###   ########.fr       */
+/*   Updated: 2025/07/10 22:56:56 by anemet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// rotate A untile the target position is at the top
+// rotate A until the target position is at the top
 // used before pushing an element from B back to A
 // if target is in the first half, rotate up (ra)
 // otherwise rotate down (rra)
@@ -103,7 +103,7 @@ void	final_rotation(t_stack **a)
 	}
 }
 
-// the main sorting algorith for stacks larger than 3
+// the main sorting algorithm for stacks larger than 3
 void	push_swap_turk(t_stack **a, t_stack **b)
 {
 	int	stack_a_size;

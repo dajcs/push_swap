@@ -6,7 +6,7 @@
 /*   By: anemet <anemet@student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 19:40:20 by anemet            #+#    #+#             */
-/*   Updated: 2025/07/10 22:08:46 by anemet           ###   ########.fr       */
+/*   Updated: 2025/07/10 23:17:07 by anemet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	do_cheapest_move(t_stack **a, t_stack **b)
 	pb(a, b);
 }
 
-// calcualtes the cost to move each element of A to the top
+// calculates the cost to move each element of A to the top
 //                       ... and its target in B to the top
 // Cost in A: positive for ra, negative for rra
 // Cost in B: positive for rb, negative for rrb

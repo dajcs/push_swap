@@ -6,7 +6,7 @@
 /*   By: anemet <anemet@student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 16:12:09 by anemet            #+#    #+#             */
-/*   Updated: 2025/07/10 16:19:07 by anemet           ###   ########.fr       */
+/*   Updated: 2025/07/10 23:14:13 by anemet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,33 @@ void	error_exit(t_stack **a, t_stack **b)
 	free_stack(b);
 	ft_putendl_fd("Error", 2);
 	exit(1);
+}
+
+void	print_stacks(t_stack *a, t_stack *b)
+{
+	t_stack	*tmp_a;
+	t_stack	*tmp_b;
+
+	tmp_a = a;
+	tmp_b = b;
+	ft_printf("------- STACKS -------\n");
+	ft_printf("     A         B\n");
+	ft_printf("  -------   -------\n");
+	while (tmp_a || tmp_b)
+	{
+		if (tmp_a)
+		{
+			ft_printf("  %-7d", tmp_a->value);
+			tmp_a = tmp_a->next;
+		}
+		else
+			ft_printf("           ");
+		if (tmp_b)
+		{
+			ft_printf("   %-7d\n", tmp_b->value);
+			tmp_b = tmp_b->next;
+		}
+		else
+			ft_printf("\n");
+	}
 }

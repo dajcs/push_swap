@@ -6,7 +6,7 @@
 /*   By: anemet <anemet@student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 11:44:45 by anemet            #+#    #+#             */
-/*   Updated: 2025/07/10 14:25:59 by anemet           ###   ########.fr       */
+/*   Updated: 2025/07/10 23:06:42 by anemet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,6 @@ t_stack				*get_stack_bottom(t_stack *stack);
 void				free_stack(t_stack **stack);
 void				free_split(char **split_args);
 void				error_exit(t_stack **a, t_stack **b);
+void				print_stacks(t_stack *a, t_stack *b);
 
 #endif

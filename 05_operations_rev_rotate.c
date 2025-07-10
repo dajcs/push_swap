@@ -6,21 +6,20 @@
 /*   By: anemet <anemet@student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 15:40:53 by anemet            #+#    #+#             */
-/*   Updated: 2025/07/10 16:06:57 by anemet           ###   ########.fr       */
+/*   Updated: 2025/07/10 16:08:50 by anemet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "push_swap.h"
 
 // returns the node just before the bottom of the stack
-t_stack *get_stack_before_bottom(t_stack *stack)
+t_stack	*get_stack_before_bottom(t_stack *stack)
 {
 	if (!stack || !stack->next)
 		return (NULL);
 	while (stack->next->next)
 		stack = stack->next;
-	return stack;
+	return (stack);
 }
 
 // rotates reverse the stack -- Shift down all elements, old last -> new first
@@ -32,7 +31,7 @@ t_stack *get_stack_before_bottom(t_stack *stack)
 void	rev_rotate(t_stack **stack)
 {
 	t_stack	*last_node;
-	t_stack *before_last_node;
+	t_stack	*before_last_node;
 
 	if (!stack || !*stack || !(*stack)->next)
 		return ;

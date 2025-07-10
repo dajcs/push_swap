@@ -6,10 +6,9 @@
 /*   By: anemet <anemet@student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 15:00:11 by anemet            #+#    #+#             */
-/*   Updated: 2025/07/10 15:39:16 by anemet           ###   ########.fr       */
+/*   Updated: 2025/07/10 16:04:07 by anemet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "push_swap.h"
 
@@ -20,10 +19,10 @@
 // last_node = ...         // find current (old) last node
 // last_node->next = first_node  // link new last node to old first node
 // first_node->next = NULL; to old first is the new last so its next = NULL
-void rotate(t_stack **stack)
+void	rotate(t_stack **stack)
 {
-	t_stack *first_node;
-	t_stack *last_node;
+	t_stack	*first_node;
+	t_stack	*last_node;
 
 	if (!stack || !*stack || !(*stack)->next)
 		return ;
@@ -34,8 +33,7 @@ void rotate(t_stack **stack)
 	first_node->next = NULL;
 }
 
-
-// ra - rotate a: the old last element in `a` will become the first
+// ra - rotate a: the old first element in `a` will become the last
 // writes "ra\n" on STDOUT
 void	ra(t_stack **a)
 {
@@ -43,7 +41,7 @@ void	ra(t_stack **a)
 	ft_putendl_fd("ra", 1);
 }
 
-// rb - rotate b: the old last element in `b` will become the first
+// rb - rotate b: the old first element in `b` will become the last
 // writes "rb\n" on STDOUT
 void	rb(t_stack **b)
 {

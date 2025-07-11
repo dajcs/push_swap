@@ -6,11 +6,20 @@
 /*   By: anemet <anemet@student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 19:40:20 by anemet            #+#    #+#             */
-/*   Updated: 2025/07/10 23:17:07 by anemet           ###   ########.fr       */
+/*   Updated: 2025/07/11 20:46:10 by anemet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+// return the minimum of two integers
+int	min(int x, int y)
+{
+	if (x < y)
+		return (x);
+	else
+		return (y);
+}
 
 // the last few lines from the function `do_rotate(a, b, cheapest)`
 void	do_similar_loops_for_b(t_stack **b, t_stack *cheapest)
@@ -56,6 +65,8 @@ void	do_rotate(t_stack **a, t_stack **b, t_stack *cheapest)
 }
 
 // finds the node in A with the lowest move cost and executes the move
+// if cost_a and cost_b have different signs => cost = |cost_a| + |cost_b|
+// else cost = diff + common = |cost_a - cost_b| + min(|cost_a|, |cost_b|)
 void	do_cheapest_move(t_stack **a, t_stack **b)
 {
 	t_stack	*current;
@@ -67,7 +78,11 @@ void	do_cheapest_move(t_stack **a, t_stack **b)
 	cheapest_cost = INT_MAX;
 	while (current)
 	{
-		cost = abs(current->cost_a) + abs(current->cost_b);
+		if (current->cost_a * current->cost_b <= 0)
+			cost = abs(current->cost_a) + abs(current->cost_b);
+		else
+			cost = abs(current->cost_a - current->cost_b)
+				+ min(abs(current->cost_a), abs(current->cost_b));
 		if (cost < cheapest_cost)
 		{
 			cheapest_cost = cost;

@@ -6,7 +6,7 @@
 /*   By: anemet <anemet@student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 11:44:45 by anemet            #+#    #+#             */
-/*   Updated: 2025/07/10 23:06:42 by anemet           ###   ########.fr       */
+/*   Updated: 2025/07/11 13:46:12 by anemet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,20 +47,25 @@ void				add_node(t_stack **stack, int n);
 void				assign_index(t_stack *stack_a, int stack_size);
 
 /* 02_operations_push.c */
+void				push(t_stack **stack_from, t_stack **stack_to);
 void				pa(t_stack **a, t_stack **b);
 void				pb(t_stack **a, t_stack **b);
 
 /* 03_operations_swap.c */
+void				swap(t_stack **stack);
 void				sa(t_stack **a);
 void				sb(t_stack **b);
 void				ss(t_stack **a, t_stack **b);
 
 /* 04_operations_rotate.c */
+void				rotate(t_stack **stack);
 void				ra(t_stack **a);
 void				rb(t_stack **b);
 void				rr(t_stack **a, t_stack **b);
 
 /* 05_operations_rev_rotate.c */
+t_stack				*get_stack_before_bottom(t_stack *stack);
+void				rev_rotate(t_stack **stack);
 void				rra(t_stack **a);
 void				rrb(t_stack **b);
 void				rrr(t_stack **a, t_stack **b);
@@ -82,7 +87,6 @@ int					get_lowest_index_pos(t_stack **stack);
 void				get_target_pos(t_stack **a, t_stack **b);
 int					get_stack_size(t_stack *stack);
 t_stack				*get_stack_bottom(t_stack *stack);
-// t_stack				*get_stack_before_bottom(t_stack *stack);
 
 /* 10_utils_free.c */
 void				free_stack(t_stack **stack);

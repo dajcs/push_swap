@@ -6,12 +6,13 @@
 #    By: anemet <anemet@student.42luxembourg.lu>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/10 16:21:27 by anemet            #+#    #+#              #
-#    Updated: 2025/07/10 16:38:07 by anemet           ###   ########.fr        #
+#    Updated: 2025/07/11 15:01:01 by anemet           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# Executable name
+# Executable names
 NAME = push_swap
+BONUS_NAME = checker
 
 # Compiler and flags
 CC = cc
@@ -19,62 +20,75 @@ CFLAGS = -Wall -Wextra -Werror -I. -Ilibft -g
 # for debugging with AddressSanitizer, add -g -fsanitize=address
 
 # Directories
-SRC_DIR = .
 OBJ_DIR = obj
 LIBFT_DIR = libft
 
-# Source files
-SRCS = main.c \
-            00_parsing.c \
-            01_stack_init.c \
-            02_operations_push.c \
-            03_operations_swap.c \
-            04_operations_rotate.c \
-            05_operations_rev_rotate.c \
-            06_sort_small.c \
-            07_sort_large.c \
-            08_cost.c \
-            09_utils_positions.c \
-            10_utils_free.c \
+# Source files shared by both push_swap and checker
+SRCS_COMMON = 00_parsing.c \
+              01_stack_init.c \
+              02_operations_push.c \
+              03_operations_swap.c \
+              04_operations_rotate.c \
+              05_operations_rev_rotate.c \
+              09_utils_positions.c \
+              10_utils_free.c
 
-# prepend source directory to source files
-SRC_FILES = $(addprefix $(SRC_DIR)/, $(SRCS))
+# Files only for the main push_swap program
+SRCS_MAIN = main.c \
+              06_sort_small.c \
+              07_sort_large.c \
+              08_cost.c
 
-# Object files (place them in obj/ directory)
-OBJ_FILES = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRC_FILES))
+# Files only for the `checker` program
+SRCS_BONUS = 11_checker_bonus.c
 
-# Libft archive
-LIBFT = $(LIBFT_DIR)/libft.a
+# Full source lists for each target
+SRCS       = $(SRCS_COMMON) $(SRCS_MAIN)
+BONUS_SRCS = $(SRCS_COMMON) $(SRCS_BONUS)
 
-# Default rule
+# --------- OBJECT FILES -----------
+# Create object file lists, placing them in OBJ_DIR
+OBJS       = $(patsubst %.c,$(OBJ_DIR)/%.o,$(SRCS))
+BONUS_OBJS = $(patsubst %.c,$(OBJ_DIR)/%.o,$(BONUS_SRCS))
+
+# ---------- LIBRARIES -------------
+LIBFT      = $(LIBFT_DIR)/libft.a
+INCLUDES   = -I. -I$(LIBFT_DIR)
+
+
+# ---------- RULES -----------------
+
 all: $(NAME)
 
-# Link the program
-$(NAME): $(OBJ_FILES) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJ_FILES) $(LIBFT) -o $(NAME)
+bonus: $(BONUS_NAME)
 
-# compile object files
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@mkdir -p $(OBJ_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+# Rule to build the main push_swap executable
+$(NAME): $(OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) $(INCLUDES) -o $(NAME) $(OBJS) -L$(LIBFT_DIR) -lft
 
-# Rule to build libft
+# Rule to build the bonus checker executable
+$(BONUS_NAME) :$(BONUS_OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) $(INCLUDES) -o $(BONUS_NAME) $(BONUS_OBJS) -L$(LIBFT_DIR) -lft
+
+# Rule to build the libft library
 $(LIBFT):
 	@make -C $(LIBFT_DIR)
 
-# Clean object files
+# Generic rule to compile any .c file into an object file in ./obj
+$(OBJ_DIR)/%.o: %.c
+	@mkdir -p $(OBJ_DIR)
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
 clean:
 	@make -C $(LIBFT_DIR) clean
 	@rm -rf $(OBJ_DIR)
 
-# Clean everything
 fclean: clean
 	@make -C $(LIBFT_DIR) fclean
 	@rm -f $(NAME)
+	@rm -f $(BONUS_NAME)
 
-# rebuild everything
 re: fclean all
 
 # Phony targets
-.PHONY: all clean fclean re
-
+.PHONY: all clean fclean re bonus

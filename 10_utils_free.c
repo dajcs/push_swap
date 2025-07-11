@@ -6,11 +6,23 @@
 /*   By: anemet <anemet@student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 16:12:09 by anemet            #+#    #+#             */
-/*   Updated: 2025/07/10 23:14:13 by anemet           ###   ########.fr       */
+/*   Updated: 2025/07/11 14:56:36 by anemet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+// checks if a stack is sorted in ascending order
+bool	is_sorted(t_stack *stack)
+{
+	while (stack && stack->next)
+	{
+		if (stack->value > stack->next->value)
+			return (false);
+		stack = stack->next;
+	}
+	return (true);
+}
 
 // frees all nodes in a stack
 // iterates through linke list, freeing each node one by one

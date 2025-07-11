@@ -6,7 +6,7 @@
 /*   By: anemet <anemet@student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 11:44:45 by anemet            #+#    #+#             */
-/*   Updated: 2025/07/11 13:46:12 by anemet           ###   ########.fr       */
+/*   Updated: 2025/07/11 14:56:53 by anemet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ void				rrb(t_stack **b);
 void				rrr(t_stack **a, t_stack **b);
 
 /* 06_sort_small.c */
-bool				is_sorted(t_stack *stack);
 void				sort_three(t_stack **a);
 void				sort(t_stack **a, t_stack **b);
 
@@ -89,6 +88,7 @@ int					get_stack_size(t_stack *stack);
 t_stack				*get_stack_bottom(t_stack *stack);
 
 /* 10_utils_free.c */
+bool				is_sorted(t_stack *stack);
 void				free_stack(t_stack **stack);
 void				free_split(char **split_args);
 void				error_exit(t_stack **a, t_stack **b);

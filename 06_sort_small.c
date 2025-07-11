@@ -6,23 +6,11 @@
 /*   By: anemet <anemet@student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 14:32:41 by anemet            #+#    #+#             */
-/*   Updated: 2025/07/09 19:36:10 by anemet           ###   ########.fr       */
+/*   Updated: 2025/07/11 14:56:28 by anemet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-// checks if a stack is sorted in ascending order
-bool	is_sorted(t_stack *stack)
-{
-	while (stack && stack->next)
-	{
-		if (stack->value > stack->next->value)
-			return (false);
-		stack = stack->next;
-	}
-	return (true);
-}
 
 // sorts a stack of three elements using a maximum of 2 operations
 //   2 1     3 2 1      3 1        1 3 1          2 1

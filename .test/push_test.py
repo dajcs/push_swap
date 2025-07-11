@@ -44,6 +44,7 @@ def main() -> None:
     print()
     print("../push_swap $ARG | wc -l")
     print("../push_swap $ARG | ./checker_linux $ARG")
+    print("../push_swap $ARG | ../checker $ARG")
     print()
 
 

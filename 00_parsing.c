@@ -6,7 +6,7 @@
 /*   By: anemet <anemet@student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 13:48:22 by anemet            #+#    #+#             */
-/*   Updated: 2025/07/10 19:58:52 by anemet           ###   ########.fr       */
+/*   Updated: 2025/07/11 15:24:54 by anemet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	fill_stack_from_args(int argc, char **argv, t_stack **a)
 	i = 1;
 	while (i < argc)
 	{
-		if (!ft_strchr("-+0123456789 \t", argv[i][0]))
+		if (!argv[i][0] || !ft_strchr("-+0123456789 \t", argv[i][0]))
 			error_exit(a, NULL);
 		num = ft_atol(argv[i]);
 		if (num > INT_MAX || num < INT_MIN)

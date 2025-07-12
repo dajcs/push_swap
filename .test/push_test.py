@@ -36,7 +36,7 @@ def main() -> None:
     # random.sample guarantees uniqueness
     nums = random.sample(range(args.low, args.high + 1), args.count)
 
-    # One per line; pipe/redirect as desired
+    # ARG="ints separated by spaces"
     vals = ' '.join(map(str, nums))
     print()
     print(f'ARG="{vals}";')

@@ -1,8 +1,44 @@
 # push_swap
 push_swap project @ school 42
 
+- Task description: [push_swap](.test/push_swap.pdf)
 - Based on the [Turk algorithm](https://medium.com/@ayogun/push-swap-c1f5d2d41e97) by A. Yigit Ogun
 - and an easy to digest [video presentation](https://www.youtube.com/watch?v=wRvipSG4Mmk&t=1272s) by Thuggonaut.
+- The strategy in a few sentences:
+  - push the cheapest node from stack `a` to `b` in such a way that in the end we'll have the `b` reverse sorted.
+    - cheapest means the less operations needed
+	- we push all but 3, because it's cheaper to sort in place those remaining 3 and then get back the nodes from `b` to `a`
+    ```c
+    // we want to push elements from A to B so that nodes are in reverse order in B
+    // target position in B: the node on top of which we're pushing the node from A
+    // this is the largest element in B that is smaller than the node in A
+    // if all nodes in B are bigger than node in A, target will be the largest in B
+    /* example:
+                   3 ---         >
+                                    21 ---------------------
+                   9 ---------   >
+                                     8 --------
+                                     6 ------
+                        A                B
+    ```
+    - when the node to be pushed from `a` is smaller then all the elements in `b` then we push it on top of the largest element in `b` because by a simple rotation in `b` we can always restore the decreasing order
+  - after everything but 3 pushed to `a` we sort in place the remaining 3 nodes and we execute a simplified reverse logic to push back the nodes from `b` to `a`.
+    - the logic is simplified because this time we don't rotate `b`, since that is already in reverse order, we just push whatever is on the top back to `a`
+    - we need to rotate `a` from time-to-time because of those 3 nodes left there might intertwine into our reverse sorted values in `b`
+    ```c
+    // calculates the target position in stack A for the top element of B
+    // we use the inverse of the logic used for A->B
+    // get the smallest index in A that is still larger than B's top node index
+    // Edge case: if b_index is larger than everything in A, target is the smallest
+    /* example:
+    								<   ----------------- 21
+    			6 ------
+    								<   --------- 9
+    			10 ----------
+    			17 -----------------
+    					A                B
+    ```
+    - we then make a final rotation of `a` to put the smallest element on the top
 - `make` or `make all` compiles `push_swap`
 - `make bonus` compiles the `checker`
 - in the `.test` directory there is a small python random number generator

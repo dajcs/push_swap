@@ -6,7 +6,7 @@
 /*   By: anemet <anemet@student.42luxembourg.lu>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 13:48:22 by anemet            #+#    #+#             */
-/*   Updated: 2025/07/11 15:24:54 by anemet           ###   ########.fr       */
+/*   Updated: 2025/07/14 12:04:00 by anemet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static long	ft_atol(const char *str)
 }
 
 // fills stack `a` from command line arguments
-void	fill_stack_from_args(int argc, char **argv, t_stack **a)
+bool	fill_stack_from_args(int argc, char **argv, t_stack **a)
 {
 	int		i;
 	long	num;
@@ -68,13 +68,14 @@ void	fill_stack_from_args(int argc, char **argv, t_stack **a)
 	while (i < argc)
 	{
 		if (!argv[i][0] || !ft_strchr("-+0123456789 \t", argv[i][0]))
-			error_exit(a, NULL);
+			return (false);
 		num = ft_atol(argv[i]);
 		if (num > INT_MAX || num < INT_MIN)
-			error_exit(a, NULL);
+			return (false);
 		add_node(a, (int)num);
 		i++;
 	}
+	return (true);
 }
 
 // top-level function to validate all inputs and initialize stack `a`
@@ -90,12 +91,15 @@ void	validate_and_parse_args(int argc, char **argv, t_stack **a)
 		split_arg1 = ft_split(argv[1], ' ');
 		while (split_arg1[i])
 			i++;
-		fill_stack_from_args(i + 1, split_arg1 - 1, a);
-		free_split(split_arg1);
+		if (fill_stack_from_args(i + 1, split_arg1 - 1, a))
+			free_split(split_arg1);
+		else
+		{
+			free_split(split_arg1);
+			error_exit(a, NULL);
+		}
 	}
-	else
-	{
-		fill_stack_from_args(argc, argv, a);
-	}
+	else if (!fill_stack_from_args(argc, argv, a))
+		error_exit(a, NULL);
 	check_duplicates(*a);
 }

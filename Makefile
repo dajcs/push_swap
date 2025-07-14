@@ -6,7 +6,7 @@
 #    By: anemet <anemet@student.42luxembourg.lu>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/10 16:21:27 by anemet            #+#    #+#              #
-#    Updated: 2025/07/11 15:01:01 by anemet           ###   ########.fr        #
+#    Updated: 2025/07/14 11:14:11 by anemet           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,8 @@ BONUS_NAME = checker
 
 # Compiler and flags
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I. -Ilibft -g
-# for debugging with AddressSanitizer, add -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -I. -Ilibft -g 
+# for debugging with AddressSanitizer, add -g -fsanitize=address,leak -fno-omit-frame-pointer
 
 # Directories
 OBJ_DIR = obj
